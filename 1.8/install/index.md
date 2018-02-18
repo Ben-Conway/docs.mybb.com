@@ -2,33 +2,36 @@
 layout: page
 title:  "Install"
 categories: [install]
+
+redirect_from:
+- /Installing.html
 ---
 
 Thanks for choosing MyBB as the discussion board software for your community!
 
-We've broken down the installation into many smaller steps. Don't worry if it looks daunting; if you need any help, just post a thread in one of our [Support Forums](http://community.mybb.com/) for the version you are running, and we will help you out.
+We've broken down the installation into many smaller steps. Don't worry if it looks daunting; if you need any help, just post a thread in one of our [Support Forums](https://community.mybb.com/) for the version you are running, and we will help you out.
 
-* MyBB comes with the [features](http://www.mybb.com/features) that one would expect from a bulletin board software, as well as some unique features not found elsewhere.
-* Having trouble with MyBB? The support at the [MyBB Community Forums](http://community.mybb.com/) is free and available to anyone using MyBB, supported by the [volunteer team](http://www.mybb.com/about/team/), and other members of the community!
+* MyBB comes with the [features](https://www.mybb.com/features) that one would expect from a bulletin board software, as well as some unique features not found elsewhere.
+* Having trouble with MyBB? The support at the [MyBB Community Forums](https://community.mybb.com/) is free and available to anyone using MyBB, supported by the [volunteer team](https://www.mybb.com/about/team/), and other members of the community!
 * MyBB is easily customizable to suit your site's needs and looks.
-* Best of all, MyBB is [released under the GNU Lesser GPL licence](http://www.mybb.com/about/license), and therefore it's [entirely free](http://www.gnu.org/philosophy/free-sw.html)! No forced advertisements, no cost, no sign-ups, no forced email subscriptions!
-* You will require a web host to run your forum
-* Your web host must satisfy a few basic requirements for MyBB to run properly.
+* Best of all, MyBB is [released under the GNU Lesser GPL licence](https://www.mybb.com/about/license), and therefore it's [entirely free](https://www.gnu.org/philosophy/free-sw.html)! No forced advertisements, no cost, no sign-ups, no forced email subscriptions!
+* You will require a web host to run your forum.
+* Your web host must satisfy a few [basic requirements](https://docs.mybb.com/1.8/install/requirements/) for MyBB to run properly.
 
 ## Preparation
 
 ### Downloading the MyBB Files
 
-1. First, download the latest MyBB package from the [MyBB downloads page](http://www.mybb.com/download)
+1. First, download the latest MyBB package from the [MyBB downloads page](https://www.mybb.com/download)
 2. After downloading the zip file, unzip/decompress the file.
-    * On Windows you can either use the [built in utility](http://windows.microsoft.com/en-au/windows-vista/compress-and-uncompress-files-zip-files) or an application such as [7-zip](http://www.7-zip.org/)
+    * On Windows you can either use the [built in utility](https://support.microsoft.com/en-gb/help/14200/windows-compress-uncompress-zip-files) or an application such as [7-zip](http://www.7-zip.org/)
     * On *nix systems you can run `unzip mybb-package-name.zip`
 
 ### Uploading Files
 
-In the archive you extracted earlier there will be two directories: Documentation and Upload. The Documentation directory contains useful information, however you need not upload it to your server.
+In the archive you extracted earlier there will be two directories: Documentation and Upload. The Documentation directory contains useful information, however you need not upload it to your server. The Upload directory contains the various files needed to run the MyBB software on your host.
 
-Next, you will need to upload the **contents** of the `Upload/` directory to either your website root directory (sometimes called `www`, `htdocs` or `httpdocs`), or a subdirectory of of your root directory (such as <root>/forums or <root>/community).
+Next, you will need to upload the **contents** of the `Upload/` directory to either your website root directory (sometimes called `www`, `htdocs` or `httpdocs`), or a subdirectory of your root directory (such as <root>/forums or <root>/community). It is not recommended that you upload the entire `Upload/` directory as it can lead to confusion when accessing & adminstering your forum.
 
 The process of uploading your files will depend on your hosting configuration, but FTP is the most common method. [FileZilla](https://filezilla-project.org/) is a free FTP client suitable for uploading MyBB.
 
@@ -58,7 +61,7 @@ If you are using FileZilla you can right click on a file or directory and click 
 
 #### Windows Systems
 
-On Windows systems you will need to follow [these instructions](http://technet.microsoft.com/en-us/library/bb727008.aspx). In general the files and directories listed above require **Full modify** permissions.
+On Windows systems you will need to follow [these instructions](https://technet.microsoft.com/en-us/library/bb727008.aspx). In general the files and directories listed above require **Full modify** permissions.
 
 ## Installer
 
@@ -74,9 +77,9 @@ All you need to do is click **Next** on this page.
 
 ### License Agreement
 
-You must read and agree to the [license agreement](http://www.mybb.com/about/license) before you can install MyBB. You must adhere to the license agreement at all times while the board is installed. After reading the agreement, click the **Next** button on this page.
+You must read and agree to the [license agreement](https://www.mybb.com/about/license) before you can install MyBB. You must adhere to the license agreement at all times while the board is installed. After reading the agreement, click the **Next** button on this page.
 
-If you would like more information about the GNU LGPL license and what it means for you [consult the GNU website](http://www.gnu.org/licenses/lgpl.html).
+If you would like more information about the GNU LGPL license and what it means for you [consult the GNU website](https://www.gnu.org/licenses/lgpl.html).
 
 [![License screen](/assets/images/install/license.jpg)](/assets/images/install/license.jpg)
 
@@ -215,7 +218,7 @@ If you have SSH access on your *nix server you may prefer to use one of the foll
 ### `wget`
 
 ```sh
-wget --content-disposition http://www.mybb.com/download/latest -O mybb.zip
+wget --content-disposition https://www.mybb.com/download/latest -O mybb.zip
 unzip mybb.zip "Upload/*"
 mv Upload/* .
 rm -Rf Upload mybb.zip
@@ -226,7 +229,7 @@ chmod -R 0777 cache uploads inc/settings.php inc/config.php
 ### `curl`
 
 ```sh
-curl http://www.mybb.com/download/latest -o mybb.zip
+curl https://www.mybb.com/download/latest -o mybb.zip
 unzip mybb.zip "Upload/*"
 mv Upload/* .
 rm -Rf Upload mybb.zip
@@ -237,7 +240,7 @@ chmod -R 0777 cache uploads inc/settings.php inc/config.php
 ### `aria2c`
 
 ```sh
-aria2c http://www.mybb.com/download/latest -o mybb.zip
+aria2c https://www.mybb.com/download/latest -o mybb.zip
 unzip mybb.zip "Upload/*"
 mv Upload/* .
 rm -Rf Upload mybb.zip
@@ -248,7 +251,7 @@ chmod -R 0777 cache uploads inc/settings.php inc/config.php
 ### `lynx`
 
 ```sh
-lynx -crawl -dump http://www.mybb.com/download/latest > mybb.zip
+lynx -crawl -dump https://www.mybb.com/download/latest > mybb.zip
 unzip mybb.zip "Upload/*"
 mv Upload/* .
 rm -Rf Upload mybb.zip

@@ -2,17 +2,48 @@
 layout: page
 title:  "Upgrade"
 categories: [install]
+
+redirect_from:
+- /Upgrading.html
 ---
 
 ## Preparing for your Upgrade
 
 Before you upgrade, you should always read the announcement blog post properly before starting. The new version's changes will clearly be explained and provide an insight into how difficult the upgrade will be.
 
-1. First, you may want to shut down your forum. Doing this means that no one will interrupt the upgrade process accidentally. Please remember that switching the forum by using the **Board Online/Offline** setting is **not** recommended. The best method is to use a `.htaccess` restriction on your forum's root folder so that no one can access the front-end. There are various tutorials that help you do this and some hosts even provide simple tools to do this.
+1. First, you may want to shut down your forum. Doing this means that no one will interrupt the upgrade process accidentally. Please remember that switching the forum off by using the **Board Online/Offline** setting is **not** recommended. The best method is to use a `.htaccess` restriction on your forum's root folder so that no one can access the front-end. 
+
+To restrict access to your forum except from your IP address, you need to place the following code in your root `.htaccess` file if you're using apache or in the server block of your site's config file if you're using nginx. Replace `127.0.0.1` with [your IP address](https://icanhazip.com/).
+
+Apache 2.2:
+
+```
+Order deny,allow
+Deny from all
+Allow from 127.0.0.1
+```
+
+Apache 2.4:
+
+```
+Require all denied
+Require ip 127.0.0.1
+```
+
+Nginx:
+
+```
+location / {
+    allow 127.0.0.1;
+    deny  all;
+}
+```
+
+If you find yourself unable to access your website during this process, it is possible that you have a dynamic IP, in which case you will have to repeat the above procedure whenever your IP changes.
 
 2. Secondly, you should back up your files and database and store them in a safe place. Just in case something goes wrong, you can restore the backup and start again. You can back up the database using the [MyBB Admin CP or your database management software](/1.8/administration/backups).
 
-3. You must deactivate (or disable) all of your plugins. This is because it is likely they will need to be updated to work on the new version and can cause problems if they are left active.
+3. You must deactivate (or disable) all of your plugins. This is because it is likely they will need to be updated to work on the new version and can cause problems if they are left active.  You can deactivate (or disable) your plugins by going to  **Admin CP > Board Settings > General Configuration** and changing "Disable All Plugins" to Yes.
 
 ### Downloading the Correct Upgrade Package
 
@@ -22,7 +53,7 @@ There are two different methods of upgrading your forum: full upgrades and a cha
 
 If your current version is more than one point below the newest version, you need to make a full upgrade. For example, if you're using 1.6.1 and the newest version is 1.6.4, then you need a full upgrade. The same applies if you're using 1.6.x and you're upgrading to 1.8.x. You need to use the latest version of the software.
 
-[Download the latest version](http://mybb.com/download/).
+[Download the latest version](https://www.mybb.com/download/).
 
 #### Changed Files Upgrade
 
@@ -54,7 +85,7 @@ Once you've downloaded the correct upgrade package for you, it's time to do the 
 
 4. If the blog post announcement mentions that there are language changes and you've either customised your English language pack (the default pack) or installed a custom language pack, then perform the following:
 
-	1. Check to see if the language pack you're using has already been updated in the [Translation Releases Forum](http://community.mybb.com/forum-169.html). Download and install any updates you need.
+	1. Check to see if the language pack you're using has already been updated in the [Translation Releases Forum](https://community.mybb.com/forum-169.html). Download and install any updates you need.
 
 	2. If you have made customisations to the packs yourself, or you manage a language pack for MyBB, then read through the blog post announcement for a list of changes to the language packs and apply the changes as necessary.
 
@@ -62,6 +93,6 @@ Once you've downloaded the correct upgrade package for you, it's time to do the 
 
 ## Conclusion
 
-If you run into any problems at any point of the upgrade process, visit the [Community Forum](http://community.mybb.com/) for help.
+If you run into any problems at any point of the upgrade process, visit the [Community Forum](https://community.mybb.com/) for help.
 
 Otherwise, *congratulations*! You've just upgraded your forum!
